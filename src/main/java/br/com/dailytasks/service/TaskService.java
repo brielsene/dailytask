@@ -4,6 +4,10 @@ import br.com.dailytasks.dto.TaskDto;
 import br.com.dailytasks.orm.Task;
 import br.com.dailytasks.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -16,8 +20,11 @@ public class TaskService {
 
 
 
-    public List<TaskDto>listaTasks(){
-        List<Task> tasks = taskRepository.findAll();
+    public List<TaskDto> listaTasks(){
+        //ordenando
+        Sort sort = Sort.by("data").descending();
+        Pageable pageable = PageRequest.of(0, 2);
+        List<Task> tasks = taskRepository.findAll(sort);
         return TaskDto.convert(tasks);
     }
 
