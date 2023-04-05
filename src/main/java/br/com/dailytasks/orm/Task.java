@@ -26,6 +26,6 @@ public class Task {
     public Task(TaskDto taskDto){
         this.nome = taskDto.getNome();
         this.descricao = taskDto.getDescricao();
-        this.data = taskDto.getData();
+//        this.data = taskDto.getData();
     }
 }

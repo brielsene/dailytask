@@ -16,13 +16,13 @@ public class TaskDto {
     private Long id;
     private String nome;
     private String descricao;
-    private Date data;
+//    private Date data;
 
     public TaskDto(Task task){
         this.id = task.getId();
         this.nome = task.getNome();
         this.descricao = task.getDescricao();
-        this.data = task.getData();
+//        this.data = task.getData();
 
     }
 

@@ -4,6 +4,7 @@ import br.com.dailytasks.dto.TaskDto;
 import br.com.dailytasks.orm.Task;
 import br.com.dailytasks.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,5 +25,12 @@ public class TaskController {
     @PostMapping
     public void registrarNovaTask(@RequestBody TaskDto taskDto){
         taskService.cadastrar(taskDto);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskDto> getById(@PathVariable("id")Long id){
+        TaskDto taskDto = taskService.getById(id);
+        return ResponseEntity.ok(taskDto);
+
     }
 }

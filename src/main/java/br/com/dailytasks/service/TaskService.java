@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -31,5 +32,16 @@ public class TaskService {
     public void cadastrar(TaskDto taskDto){
         Task task = new Task(taskDto);
         taskRepository.save(task);
+    }
+
+    public TaskDto getById(Long id){
+        Optional<Task> byId = taskRepository.findById(id);
+        if(byId.isPresent()){
+            Task task = byId.get();
+            TaskDto taskDto = new TaskDto(task);
+            return taskDto;
+        }else{
+            return null;
+        }
     }
 }
