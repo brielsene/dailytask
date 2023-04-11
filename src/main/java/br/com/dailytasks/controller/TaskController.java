@@ -23,8 +23,8 @@ public class TaskController {
     }
 
     @PostMapping
-    public void registrarNovaTask(@RequestBody TaskDto taskDto){
-        taskService.cadastrar(taskDto);
+    public void registrarNovaTask(@RequestBody Task task){
+        taskService.cadastrar(task);
     }
 
     @GetMapping("/{id}")

@@ -29,9 +29,27 @@ public class TaskService {
         return TaskDto.convert(tasks);
     }
 
-    public void cadastrar(TaskDto taskDto){
-        Task task = new Task(taskDto);
+
+//implementar funcionalidade de verificação de horários iguais
+    public String cadastrar(Task task){
+        List<Task> all = taskRepository.findAll();
+        for (Task tasks: all
+             ) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+            String dataTaskNova = sdf.format(task.getData());
+            String dataAllTasks = sdf.format(tasks.getData());
+
+            System.out.println("***************** "+dataAllTasks+" and "+dataTaskNova);
+
+
+            if(dataTaskNova.equals(dataAllTasks)){
+                return "essa data já tem atividade a ser feita";
+            }
+
+        }
+        ;
         taskRepository.save(task);
+        return "Atividade: "+task.getNome()+", cadastrada com sucesso";
     }
 
     public TaskDto getById(Long id){
