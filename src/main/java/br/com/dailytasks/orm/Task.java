@@ -1,5 +1,6 @@
 package br.com.dailytasks.orm;
 
+import br.com.dailytasks.dto.DadosAtualizaTask;
 import br.com.dailytasks.dto.DadosCadastroTask;
 import br.com.dailytasks.dto.TaskDto;
 import jakarta.persistence.*;
@@ -33,6 +34,14 @@ public class Task {
         this.descricao = dadosCadastroTask.getDescricao();
         this.dataComeco = dadosCadastroTask.getDataComeco();
         this.dataFinal = dadosCadastroTask.getDataFinal();
+    }
+
+    public Task(DadosAtualizaTask dadosAtualizaTask){
+        this.id = dadosAtualizaTask.getId();
+        this.nome = dadosAtualizaTask.getNome();
+        this.descricao = dadosAtualizaTask.getDescricao();
+        this.dataComeco = dadosAtualizaTask.getDataComeco();
+        this.dataFinal = dadosAtualizaTask.getDataFinal();
     }
 
 
