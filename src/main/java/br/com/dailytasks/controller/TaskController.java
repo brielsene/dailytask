@@ -1,6 +1,5 @@
 package br.com.dailytasks.controller;
 
-import br.com.dailytasks.dto.DadosAtualizaTask;
 import br.com.dailytasks.dto.DadosCadastroTask;
 import br.com.dailytasks.dto.TaskDto;
 import br.com.dailytasks.orm.Task;
@@ -30,15 +29,10 @@ public class TaskController {
         return new ResponseEntity<>(taskService.cadastraNovaTask(dadosCadastroTask), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String>atualizaTask(@PathVariable("id")Long id, @RequestBody DadosCadastroTask dadosCadastroTask){
-        return new ResponseEntity<>(taskService.atualizaTask(id, dadosCadastroTask), HttpStatus.valueOf(200));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String>deleteTask(@PathVariable("id")Long id){
-        return new ResponseEntity<>(taskService.excluirTask(id), HttpStatus.valueOf(200));
-    }
-
-
+//    @GetMapping("/{id}")
+//    public ResponseEntity<TaskDto> getById(@PathVariable("id")Long id){
+//        TaskDto taskDto = taskService.getById(id);
+//        return ResponseEntity.ok(taskDto);
+//
+//    }
 }
