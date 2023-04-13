@@ -26,6 +26,10 @@ public class Task {
     @Column(name = "data_final")
     private Date dataFinal;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+
 
 
     //Construtor para receber DTO de cadastro
