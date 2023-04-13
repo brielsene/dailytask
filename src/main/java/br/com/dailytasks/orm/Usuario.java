@@ -1,5 +1,6 @@
 package br.com.dailytasks.orm;
 
+import br.com.dailytasks.dto.DadosCadastroUsuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +24,11 @@ public class Usuario {
     private Date dataNascimento;
     @OneToMany(mappedBy = "usuario")
     private List<Task>tasks;
+
+    public Usuario(DadosCadastroUsuario dadosCadastroUsuario){
+        this.user = dadosCadastroUsuario.getUser();
+        this.senha = dadosCadastroUsuario.getSenha();
+        this.dataNascimento = dadosCadastroUsuario.getDataNascimento();
+    }
 
 }

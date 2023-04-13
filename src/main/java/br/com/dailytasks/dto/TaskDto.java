@@ -1,6 +1,7 @@
 package br.com.dailytasks.dto;
 
 import br.com.dailytasks.orm.Task;
+import br.com.dailytasks.orm.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +20,15 @@ public class TaskDto {
     private Date dataComeco;
     private Date dataFinal;
 
+    private Usuario usuario;
+
     public TaskDto(Task task){
         this.id = task.getId();
         this.nome = task.getNome();
         this.descricao = task.getDescricao();
         this.dataComeco = task.getDataComeco();
         this.dataFinal = task.getDataFinal();
+        this.usuario = task.getUsuario();
 
     }
 

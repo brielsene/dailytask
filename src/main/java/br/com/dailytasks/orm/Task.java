@@ -38,6 +38,7 @@ public class Task {
         this.descricao = dadosCadastroTask.getDescricao();
         this.dataComeco = dadosCadastroTask.getDataComeco();
         this.dataFinal = dadosCadastroTask.getDataFinal();
+        this.usuario = dadosCadastroTask.getUsuario();
     }
 
     public Task(DadosAtualizaTask dadosAtualizaTask){
