@@ -4,6 +4,8 @@ import br.com.dailytasks.dto.DadosCadastroUsuario;
 import br.com.dailytasks.dto.DadosListagemUsuario;
 import br.com.dailytasks.orm.Usuario;
 import br.com.dailytasks.repository.UsuarioRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,4 +35,5 @@ public class UsuarioService {
         }
         return usuarios;
     }
+
 }

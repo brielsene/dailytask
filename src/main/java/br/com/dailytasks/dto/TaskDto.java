@@ -2,6 +2,7 @@ package br.com.dailytasks.dto;
 
 import br.com.dailytasks.orm.Task;
 import br.com.dailytasks.orm.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto {
     private Long id;
     private String nome;

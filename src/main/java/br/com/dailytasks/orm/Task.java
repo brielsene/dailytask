@@ -3,6 +3,7 @@ package br.com.dailytasks.orm;
 import br.com.dailytasks.dto.DadosAtualizaTask;
 import br.com.dailytasks.dto.DadosCadastroTask;
 import br.com.dailytasks.dto.TaskDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +29,7 @@ public class Task {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario")
+    @JsonBackReference
     private Usuario usuario;
 
 

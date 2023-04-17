@@ -1,11 +1,14 @@
 package br.com.dailytasks.orm;
 
 import br.com.dailytasks.dto.DadosCadastroUsuario;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.Date;
 import java.util.List;
@@ -23,6 +26,8 @@ public class Usuario {
     @Column(name = "data_nascimento")
     private Date dataNascimento;
     @OneToMany(mappedBy = "usuario")
+    @Fetch(FetchMode.SUBSELECT)
+    @JsonManagedReference
     private List<Task>tasks;
 
     public Usuario(DadosCadastroUsuario dadosCadastroUsuario){
