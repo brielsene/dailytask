@@ -1,6 +1,8 @@
 package br.com.dailytasks.dto;
 
 import br.com.dailytasks.orm.Task;
+import br.com.dailytasks.orm.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,6 +14,7 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TaskDto {
     private Long id;
     private String nome;
@@ -19,12 +22,15 @@ public class TaskDto {
     private Date dataComeco;
     private Date dataFinal;
 
+    private Usuario usuario;
+
     public TaskDto(Task task){
         this.id = task.getId();
         this.nome = task.getNome();
         this.descricao = task.getDescricao();
         this.dataComeco = task.getDataComeco();
         this.dataFinal = task.getDataFinal();
+        this.usuario = task.getUsuario();
 
     }
 

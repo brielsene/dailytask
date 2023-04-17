@@ -3,6 +3,7 @@ package br.com.dailytasks.dto;
 
 
 import br.com.dailytasks.orm.Task;
+import br.com.dailytasks.orm.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,6 +20,7 @@ public class DadosCadastroTask {
     private String descricao;
     private Date dataComeco;
     private Date dataFinal;
+    private Usuario usuario;
 
 
 }

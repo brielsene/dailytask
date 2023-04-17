@@ -3,6 +3,7 @@ package br.com.dailytasks.orm;
 import br.com.dailytasks.dto.DadosAtualizaTask;
 import br.com.dailytasks.dto.DadosCadastroTask;
 import br.com.dailytasks.dto.TaskDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,6 +27,11 @@ public class Task {
     @Column(name = "data_final")
     private Date dataFinal;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario")
+    @JsonBackReference
+    private Usuario usuario;
+
 
 
     //Construtor para receber DTO de cadastro
@@ -34,6 +40,7 @@ public class Task {
         this.descricao = dadosCadastroTask.getDescricao();
         this.dataComeco = dadosCadastroTask.getDataComeco();
         this.dataFinal = dadosCadastroTask.getDataFinal();
+        this.usuario = dadosCadastroTask.getUsuario();
     }
 
     public Task(DadosAtualizaTask dadosAtualizaTask){
