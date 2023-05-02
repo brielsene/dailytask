@@ -1,9 +1,6 @@
 package br.com.dailytasks.service;
 
-import br.com.dailytasks.dto.DadosAtualizaTask;
-import br.com.dailytasks.dto.DadosCadastroTask;
-import br.com.dailytasks.dto.DadosExclusaoTask;
-import br.com.dailytasks.dto.TaskDto;
+import br.com.dailytasks.dto.*;
 import br.com.dailytasks.exception.TaskUnavailableException;
 import br.com.dailytasks.orm.Task;
 import br.com.dailytasks.repository.TaskRepository;
@@ -69,6 +66,14 @@ public class TaskService {
         }else{
             return("Task com ID: "+id+" não existe!");
         }
+    }
+
+    public DadosListagemTasks listaTaskById(Long id){
+        Optional<Task> byId = taskRepository.findById(id);
+        Task task = byId.get();
+        DadosListagemTasks dados = new DadosListagemTasks(task);
+        return dados;
+
     }
 }
 

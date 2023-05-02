@@ -2,6 +2,7 @@ package br.com.dailytasks.controller;
 
 import br.com.dailytasks.dto.DadosAtualizaTask;
 import br.com.dailytasks.dto.DadosCadastroTask;
+import br.com.dailytasks.dto.DadosListagemTasks;
 import br.com.dailytasks.dto.TaskDto;
 import br.com.dailytasks.orm.Task;
 import br.com.dailytasks.service.TaskService;
@@ -38,6 +39,11 @@ public class TaskController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String>deleteTask(@PathVariable("id")Long id){
         return new ResponseEntity<>(taskService.excluirTask(id), HttpStatus.valueOf(200));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosListagemTasks>listarTaskById(@PathVariable("id")Long id){
+        return new ResponseEntity<>(taskService.listaTaskById(id), HttpStatus.OK);
     }
 
 
